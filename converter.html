@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weight Converter</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+    
+    input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+body{
+
+background-color:#333;
+color:#fff;
+
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+         <div class="row mt-4">
+             <div class="col-md-6 offset-md-3">
+                 <h3>Money Converter</h3>
+                 <form >
+                     <div class="form-group mb-2">
+                         <input type="number" id="inp" class="form-control" placeholder="Enter Number">
+                     </div>
+                     <div class="form-group mb-5">
+                        <select  id="currency" onchange="select()" class="form-control">
+                            <option >Rupees</option>
+                            <option >Dollars</option>
+                            <option >Bitcoin</option>
+                            <option >Euro</option>
+                        </select>
+                    </div>
+                 </form>
+                   <div id="output">
+                       <div class="card text-white bg-success mb-2">
+                           <div class="card-body">
+                               <h4 class="con">Dollars:</h4>
+                               <div id="dollars"></div>
+                           </div>
+                       </div>
+                       <div class="card text-white bg-primary mb-2">
+                            <div  class="card-body">
+                                <h4 class="con">Euro:</h4>
+                                <div id="euro"></div>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-danger mb-2">
+                                <div class="card-body">
+                                    <h4 class="con">Bitcoin:</h4>
+                                    <div id="bitcoin"></div>
+                                </div>
+                            </div>
+                   </div>
+             </div>
+         </div>
+    </div>
+ <script src="jquery-3.2.1.min.js"></script>
+ <script src="popper.min.js"></script>
+ <script src="bootstrap.min.js"></script>
+ <script>
+    
+var inp = document.getElementById('inp');
+
+var dollars = document.getElementById('dollars');
+
+var euro = document.getElementById('euro');
+
+var bitcoin = document.getElementById('bitcoin');
+
+var selectCurrency = document.getElementById('currency');
+
+var con = document.getElementsByClassName('con');
+
+var output;
+
+var currency = selectCurrency.value;
+
+
+console.log(currency);
+
+inp.addEventListener('input',convert);
+
+function convert(e){
+
+ //rupees to
+ 
+    if(currency=="Rupees"){
+
+     output = e.target.value * 0.015805279;
+
+     
+
+    con[0].innerHTML = "Dollars";
+
+dollars.innerHTML = output+" $";
+
+output = e.target.value * 0.013137152;
+
+con[1].innerHTML = "Euro";
+
+euro.innerHTML = output+" €";
+
+output = e.target.value * 0.000000951;
+
+con[2].innerHTML = "Bitcoin";
+
+bitcoin.innerHTML = output+" ฿";
+
+   };
+
+   //dollar to
+
+   if(currency=="Dollars"){
+
+      
+
+     output = e.target.value * 63.27;
+
+    con[0].innerHTML = "Rupees";    
+
+dollars.innerHTML = output+" INR";
+
+output = e.target.value * 0.83;
+
+con[1].innerHTML = "Euro";
+
+euro.innerHTML = output+" €";
+
+output = e.target.value * 0.000060;
+
+con[2].innerHTML = "Bitcoin";
+
+bitcoin.innerHTML = output+" ฿";
+
+};
+
+//Euro to 
+
+if(currency=="Euro"){
+
+     output = e.target.value * 76.12;
+
+    con[0].innerHTML = "Rupees";
+
+dollars.innerHTML = output+" INR";
+
+output = e.target.value * 1.20;
+
+con[1].innerHTML = "Dollars";
+
+euro.innerHTML = output+" $";
+
+output = e.target.value * 0.000073;
+
+con[2].innerHTML = "Bitcoin";
+
+bitcoin.innerHTML = output+" ฿";
+
+};
+
+//bitcoin to
+
+if(currency == "Bitcoin"){
+
+     output = e.target.value * 1048641.07;
+
+    con[0].innerHTML = "Rupees";
+
+dollars.innerHTML = output+" INR";
+
+output = e.target.value * 16572.76;
+
+con[1].innerHTML = "Dollars";
+
+euro.innerHTML = output+" $";
+
+output = e.target.value * 13775.61;
+
+con[2].innerHTML = "Euro";
+
+bitcoin.innerHTML = output+" €";
+
+}
+
+
+}
+
+
+function select(){
+
+currency = selectCurrency.value;
+
+
+
+};
+
+
+
+ </script>
+</body>
+</html>
